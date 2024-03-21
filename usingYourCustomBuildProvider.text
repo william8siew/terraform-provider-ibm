@@ -1,0 +1,47 @@
+These steps are based on this documentation
+https://developer.hashicorp.com/terraform/cli/config/config-file#explicit-installation-method-configuration
+
+These steps assume you use a Mac with an AMD chip,
+- update the darwin_amd64 to reflect your build system used to compile the Go binary. You might need to update my Makefile
+- update the override path from /Users/<yourSystemUser> to whatever system you use
+
+Run mkdir -p ~/.terraform.d/plugins/registry.terraform.io/ibm-cloud/ibm/0.0.1/darwin_amd64
+
+Change ~/.terraformrc to use this
+provider_installation {
+    filesystem_mirror {
+        path = "/Users/<yourSystemUser>/.terraform.d/plugins/".  <--- replace this with the path to the above directory.
+        include = ["ibm-cloud/ibm"]
+    }
+    direct {
+        include = ["*/*"]
+    }
+} 
+
+
+Lastly, change your providers.tf to use the version 0.0.1
+
+terraform {
+  required_version = ">= 0.13"
+  required_providers {
+    ibm = {
+      source = "IBM-Cloud/ibm"
+      version = "0.0.1"
+    }
+  }
+}
+
+On terraform init expect to see these warnings indicating you are using your local custom built provider
+
+│ Warning: Incomplete lock file information for providers
+│ 
+│ Due to your customized provider installation methods, Terraform was forced to calculate lock file checksums locally for the following providers:
+│   - ibm-cloud/ibm
+│ 
+│ The current .terraform.lock.hcl file only includes checksums for darwin_amd64, so Terraform running on another platform will fail to install these providers.
+│ 
+│ To calculate additional checksums for another platform, run:
+│   terraform providers lock -platform=linux_amd64
+│ (where linux_amd64 is the platform to generate)
+
+- Installed ibm-cloud/ibm v0.0.1 (unauthenticated) 
