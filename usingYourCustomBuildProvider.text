@@ -9,13 +9,17 @@ Run mkdir -p ~/.terraform.d/plugins/registry.terraform.io/ibm-cloud/ibm/0.0.1/da
 
 Change ~/.terraformrc to use this
 provider_installation {
+  // Use below for testing custom provider
+  // Uncomment if planning on using official terraform registry
     filesystem_mirror {
-        path = "/Users/<yourSystemUser>/.terraform.d/plugins/".  <--- replace this with the path to the above directory.
+        path = "/Users/<yourSystemUser>/.terraform.d/plugins/"  <--- replace your system user path
         include = ["ibm-cloud/ibm"]
     }
-    direct {
-        include = ["*/*"]
-    }
+
+  // Uncomment below to use official terraform registry
+  //  direct {
+  //      include = ["*/*"]
+  //  }
 } 
 
 
