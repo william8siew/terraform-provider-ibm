@@ -12,6 +12,7 @@ resource "ibm_kms_key" "key" {
   instance_id = ibm_resource_instance.kms_instance.guid
   key_name       = "key"
   standard_key   = false
+  endpoint_type = "private"
 }
 # resource "ibm_kms_kmip_adapter" "myadapter" {
 #      instance_id = ibm_resource_instance.kms_instance.guid
