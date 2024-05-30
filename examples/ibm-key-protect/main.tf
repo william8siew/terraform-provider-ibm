@@ -4,6 +4,9 @@ resource "ibm_resource_instance" "kms_instance" {
   plan     = "tiered-pricing"
   location = "us-south"
   service_endpoints = "private"
+  parameters = {
+    allowed_network = "private-only"
+  }
 }
 resource "ibm_kms_key" "key" {
   instance_id = ibm_resource_instance.kms_instance.guid
