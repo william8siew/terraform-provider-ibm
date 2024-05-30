@@ -2,7 +2,7 @@ resource "ibm_resource_instance" "kms_instance" {
   name     = "schematics_test"
   service  = "kms"
   plan     = "tiered-pricing"
-  location = "us-south"
+  location = "eu-de"
   service_endpoints = "private"
   parameters = {
     allowed_network = "private-only"
