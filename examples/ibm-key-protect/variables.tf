@@ -21,17 +21,17 @@ variable "location" {
 variable "cos_name" {
    description = "The name of the cos instance to be provisioned"
   type        = string
-  default = "test_cos"
+  default = "test_cos_terraform"
 }
 variable "kp_name" {
    description = "The name of the keyprotect instance"
   type        = string
-  default = "test_kp"
+  default = "test_kp_terraform"
 }
 variable "key_name" {
    description = "The key protect key name"
   type        = string
-  default = "test_key"
+  default = "test_key_terraform"
 }
 variable "standard_key" {
    description = "The standard key flag"
@@ -41,5 +41,5 @@ variable "standard_key" {
 variable "bucket_name" {
    description = "The cos bucket name"
   type        = string
-  default = "test_buck"
+  default = "test_buck_terraform"
 }
