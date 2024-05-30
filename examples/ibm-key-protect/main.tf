@@ -1,10 +1,9 @@
 resource "ibm_resource_instance" "kms_instance" {
-  name     = "instance-name"
+  name     = "schematics_test"
   service  = "kms"
   plan     = "tiered-pricing"
   location = "us-south"
   service_endpoints = "private"
-
 }
 resource "ibm_kms_key" "key" {
   instance_id = ibm_resource_instance.kms_instance.guid
