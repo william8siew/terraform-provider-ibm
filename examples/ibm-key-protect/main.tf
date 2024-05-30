@@ -3,7 +3,7 @@ resource "ibm_resource_instance" "kms_instance" {
   service  = "kms"
   plan     = "tiered-pricing"
   location = "us-south"
-  
+  service_endpoints = "private"
 
 }
 resource "ibm_kms_key" "key" {
