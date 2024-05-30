@@ -33,7 +33,7 @@ resource "ibm_kms_instance_policies" "instance_policy" {
     interval_month = 3
   }
   dual_auth_delete {
-      enabled = false
+      enabled = true
   }
   metrics {
       enabled = true
